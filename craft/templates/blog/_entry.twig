@@ -1,10 +1,13 @@
 {% extends '_layout' %}
 {% block main %}
 
+{% set entryImage = entry.blogImage.one() %}
+
 <div class="container">
     <div class="row">
         <div class="col">
             <h2>{{ entry.title }}</h2>
+            <img style="width: 100%;" src="{{ entryImage.getUrl() }}" alt="">
             <h3>{{ entry.blogIntroduction }}</h3>
             {{ entry.blogBody }}
             <div class="post-meta">
@@ -12,7 +15,8 @@
                     Written by <a href="#">{{ entry.author }}</a>
                     on {{ entry.postDate | date('M d, Y ') }}
                     in 
-                    {% for category in entry.category %}
+                    {% for category in entry.category.all() %}
+                        {# <a href="{{ category.url }}">{{ category }}</a> #}
                         <a href="/categories/{{ category.slug }}">{{ category }}</a>
                     {% endfor %}
                 </p>
