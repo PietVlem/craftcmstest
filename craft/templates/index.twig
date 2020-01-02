@@ -1,0 +1,27 @@
+{% extends '_layout' %}
+{% block main %}
+
+    <div class="container">
+        <h1>Blog</h1>
+        <div class="row">
+            {% for entry in craft.entries.section('blog').limit(10).all() %}
+            <div class="col-12">
+                <a href="{{ entry.url }}">
+                    <h2>{{ entry.title }}</h2>
+                </a>
+                <h3>{{ entry.blogIntroduction }}</h3>
+                {{ entry.blogBody }}
+                <div class="post-meta">
+                    <p>
+                        Written by <a href="#">{{ entry.author }}</a>
+                        on {{ entry.postDate | date('M d, Y ') }}
+                    </p>
+                </div>
+            </div>
+            <hr/>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+

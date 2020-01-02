@@ -1,0 +1,26 @@
+{% extends '_layout' %}
+{% block main %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>{{ entry.title }}</h2>
+            <h3>{{ entry.blogIntroduction }}</h3>
+            {{ entry.blogBody }}
+            <div class="post-meta">
+                <p>
+                    Written by <a href="#">{{ entry.author }}</a>
+                    on {{ entry.postDate | date('M d, Y ') }}
+                    in 
+                    {% for category in entry.category %}
+                        <a href="/categories/{{ category.slug }}">{{ category }}</a>
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+    </div>
+    <hr/>
+</div>
+
+
+{% endblock %}
