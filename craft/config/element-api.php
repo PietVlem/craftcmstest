@@ -23,12 +23,11 @@ return [
                         'url' => $entry->url,
                         'jsonUrl' => UrlHelper::url("api/posts/{$entry->id}.json"),
                         'title' => $entry->title,
-                        'mainImage' => $entry->blogImage,
+                        'mainImage' => $entry->blogImage->one()->url,
                         'blogIntroduction' => $entry->blogIntroduction,
                         'blogBody' => $entry->blogBody,
-                        'author' => $entry->author,
+                        'author' => $entry->author->name,
                         'postDate' => $entry->postDate,
-                        'categories2' => $entry->category->all(),
                         'categories' => $categories,
                     ];
                 },
@@ -47,10 +46,10 @@ return [
                     return [
                         'url' => $entry->url,
                         'title' => $entry->title,
-                        'mainImage' => $entry->blogImage,
+                        'mainImage' => $entry->blogImage->one()->url,
                         'blogIntroduction' => $entry->blogIntroduction,
                         'blogBody' => $entry->blogBody,
-                        'author' => $entry->author,
+                        'author' => $entry->author->name,
                         'postDate' => $entry->postDate,
                         'categories' => $categories,
                     ];
