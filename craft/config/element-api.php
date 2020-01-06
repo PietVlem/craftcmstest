@@ -5,9 +5,13 @@ namespace Craft;
 use craft\elements\Entry;
 use craft\helpers\UrlHelper;
 
+
+
 return [
     'endpoints' => [
+        /* Blog */
         'api/posts.json' => function() {
+            
             return [
                 'elementType' => Entry::class,
                 'criteria' => ['section' => 'blog'],
@@ -52,6 +56,25 @@ return [
                         'author' => $entry->author->name,
                         'postDate' => $entry->postDate,
                         'categories' => $categories,
+                    ];
+                },
+            ];
+        },
+        /* Cocktails */
+        'api/cocktails.json' => function() {
+            \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
+            return [
+                'elementType' => Entry::class,
+                'criteria' => ['section' => 'cocktails'],
+                'transformer' => function(Entry $entry) {
+                    return [
+                        'url' => $entry->url,
+                        'jsonUrl' => UrlHelper::url("api/cocktails/{$entry->id}.json"),
+                        'id' => $entry->id,
+                        'title' => $entry->title,
+                        'info' => $entry->info,
+                        'ingredients' => $entry->ingredients,
+                        'instructions' => $entry->instructions,
                     ];
                 },
             ];

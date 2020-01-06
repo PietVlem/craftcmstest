@@ -1,19 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ul>
+      <li>
+        <router-link to="/">Home</router-link>
+      </li>
+      <li>
+        <router-link to="/cocktails">Cocktails</router-link>
+      </li>
+    </ul>
+    <router-view></router-view>
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 
-export default {
-  name: 'app',
+@Component({
   components: {
-    HelloWorld
-  }
-}
+
+  },
+})
+export default class App extends Vue {}
 </script>
 
 <style>
