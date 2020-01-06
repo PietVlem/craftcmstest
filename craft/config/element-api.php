@@ -79,5 +79,22 @@ return [
                 },
             ];
         },
+        'api/cocktails/<entryId:\d+>.json' => function($entryId) {
+            \Craft::$app->response->headers->set('Access-Control-Allow-Origin', '*');
+            return [
+                'elementType' => Entry::class,
+                'criteria' => ['id' => $entryId],
+                'transformer' => function(Entry $entry) {
+                    return [
+                        'url' => $entry->url,
+                        'id' => $entry->id,
+                        'title' => $entry->title,
+                        'info' => $entry->info,
+                        'ingredients' => $entry->ingredients,
+                        'instructions' => $entry->instructions,
+                    ];
+                },
+            ];
+        },
     ]
 ];

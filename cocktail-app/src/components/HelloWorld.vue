@@ -23,12 +23,6 @@ export default class HelloWorld extends Vue {
     return `${this.firstName} ${this.lastName}`;
   }
 
-  mounted() {
-    axios.get('http://crafttest.test/api/cocktails.json').then((res)=>{
-      console.log(res.data);
-    })
-  }
-
   incrementCounter(): number {
     return this.counter++;
   }

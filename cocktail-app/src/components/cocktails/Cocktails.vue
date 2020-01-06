@@ -1,15 +1,27 @@
 <template>
   <div class="hello">
-    test
+    <ul v-if="cocktails">
+      <li v-for="cocktail in cocktails" v-bind:key="cocktail.id">
+        <a :href="'/cocktail/' + cocktail.id">{{ cocktail.title }}</a>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import axios from 'axios';
 
 @Component
 export default class Cocktails extends Vue {
-  
+  cocktails = null;
+
+  mounted() {
+    axios.get('http://crafttest.test/api/cocktails.json').then((res)=>{
+      this.cocktails = res.data.data;
+      console.log(this.cocktails);
+    })
+  }
 }
 </script>
 
