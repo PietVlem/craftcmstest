@@ -26,6 +26,12 @@ export default class Cocktails extends Vue {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+ul{
+  background-color: red;
+  li{
+    background-color: aqua;
+  }
+}
 
 </style>

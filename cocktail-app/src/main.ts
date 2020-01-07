@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import HelloWorld from './components/HelloWorld.vue';
 import Cocktails from './components/cocktails/Cocktails.vue';
