@@ -1,24 +1,23 @@
 <template>
   <div class="hello">
-    <div v-if="cocktail">
-      <p>{{ cocktail.title }}</p>
+    <div v-if="SingleCocktail">
+      <p>{{ SingleCocktail.title }}</p>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import { State, Action, Getter } from 'vuex-class';
 import axios from 'axios';
 
 @Component
 export default class CocktailInfo extends Vue {
-  cocktail = null;
-  
+  @Getter('SingleCocktail') SingleCocktail: any;
+  @Action('fetchSingleCocktail') fetchSingleCocktail: any;
+
   mounted() {
-    axios.get('http://crafttest.test/api/cocktails/'+ this.$route.params.id +'.json').then((res)=>{
-      this.cocktail = res.data.data[0];
-      console.log(this.cocktail);
-    })
+    this.fetchSingleCocktail(this.$route.params.id);
   }
 }
 </script>

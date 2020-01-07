@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
-    <ul v-if="cocktails">
-      <li v-for="cocktail in cocktails" v-bind:key="cocktail.id">
+    <ul v-if="AllCocktails">
+      <li v-for="cocktail in AllCocktails" v-bind:key="cocktail.id">
         <a :href="'/cocktail/' + cocktail.id">{{ cocktail.title }}</a>
       </li>
     </ul>
@@ -10,17 +10,15 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import axios from 'axios';
+import { State, Action, Getter } from 'vuex-class';
 
 @Component
 export default class Cocktails extends Vue {
-  cocktails = null;
+  @Getter('AllCocktails') AllCocktails: any;
+  @Action('fetchCocktails') fetchCocktails: any;
 
   mounted() {
-    axios.get('http://crafttest.test/api/cocktails.json').then((res)=>{
-      this.cocktails = res.data.data;
-      console.log(this.cocktails);
-    })
+    this.fetchCocktails();
   }
 }
 </script>
