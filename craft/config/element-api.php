@@ -73,8 +73,7 @@ return [
                         'id' => $entry->id,
                         'title' => $entry->title,
                         'info' => $entry->info,
-                        'ingredients' => $entry->ingredients,
-                        'instructions' => $entry->instructions,
+                        'image' => $entry->image->one()->url
                     ];
                 },
             ];
@@ -92,6 +91,7 @@ return [
                         'info' => $entry->info,
                         'ingredients' => $entry->ingredients,
                         'instructions' => $entry->instructions,
+                        'image' => $entry->image->one()->url
                     ];
                 },
             ];

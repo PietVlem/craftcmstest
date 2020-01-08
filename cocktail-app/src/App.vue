@@ -16,15 +16,12 @@
         </ul>
       </div>
     </nav>
-    <div class="container">
-      <router-view></router-view>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import './style/main.scss';
 
 @Component({
   components: {

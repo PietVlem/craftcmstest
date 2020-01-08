@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const state = {
-    cocktails: [{}],
-    cocktail: [{}],
+    cocktails: null,
+    cocktail: null,
 };
 
 const getters = {
@@ -16,10 +16,11 @@ const actions = {
         commit('setCocktails', response.data.data);
     },
     async fetchSingleCocktail({ commit }: any, id: number){
-        const response = await axios.get('http://crafttest.test/api/cocktails/'+ id +'.json');
+        const response = await axios.get(`http://crafttest.test/api/cocktails/${id}.json`);
         commit('setSingleCocktail', response.data.data[0]);
     }
 };
+
 const mutations = {
     setCocktails: (state: any, cocktails: any) => (state.cocktails = cocktails),
     setSingleCocktail: (state: any, cocktail: any) => (state.cocktail = cocktail),

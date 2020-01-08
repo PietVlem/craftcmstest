@@ -1,40 +1,20 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueRouter from 'vue-router';
+
+/* Router */
+import router from './router';
+
+/* Vuex */
 import store from './store';
+
+/* Bootstrap */
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import HelloWorld from './components/HelloWorld.vue';
-import Cocktails from './components/cocktails/Cocktails.vue';
-import CocktailInfo from './components/cocktails/CocktailInfo.vue';
-import NotFound from './components/other/NotFound.vue';
-
-Vue.use(VueRouter);
+/* Custom style */
+import './style/main.scss';
 
 Vue.config.productionTip = false
-
-const router = new VueRouter({
-  routes: [
-    {
-      path: '/',
-      component: HelloWorld
-    },
-    {
-      path: '/cocktails',
-      component: Cocktails
-    },
-    {
-      path: '/cocktail/:id',
-      component: CocktailInfo
-    },
-    {
-      path: '*',
-      component: NotFound
-    }
-  ],
-  mode: 'history'
-})
 
 new Vue({
   router,
