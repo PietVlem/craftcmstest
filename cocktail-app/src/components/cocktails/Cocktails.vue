@@ -34,6 +34,9 @@ export default class Cocktails extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+.container{
+  margin-top: 40px;
+}
 .cocktail-wrapper{
   margin-bottom: 40px,
 }

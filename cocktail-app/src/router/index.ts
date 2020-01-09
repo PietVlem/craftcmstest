@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import HelloWorld from '../components/HelloWorld.vue';
+import Products from '../components/products/Products.vue';
 import Cocktails from '../components/cocktails/Cocktails.vue';
 import CocktailInfo from '../components/cocktails/CocktailInfo.vue';
 import NotFound from '../components/other/NotFound.vue';
@@ -12,7 +12,7 @@ const router = new VueRouter({
     routes: [
       {
         path: '/',
-        component: HelloWorld
+        component: Products
       },
       {
         path: '/cocktails',
